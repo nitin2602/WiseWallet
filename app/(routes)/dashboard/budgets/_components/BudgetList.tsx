@@ -38,7 +38,7 @@ function BudgetList() {
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-3">
           {budgets?.map((budget) => (
-            <BudgetCard item={budget} />
+            <BudgetCard key={budget.id} item={budget} />
           ))}
         </div>
       )}
