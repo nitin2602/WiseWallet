@@ -15,7 +15,7 @@ interface Summary {
   totalNumberOfBudgets: number;
 }
 
-function page() {
+function Page() {
   const { user } = useUser();
   const [summary, setSummary] = useState<Summary | null>();
 
@@ -79,4 +79,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
