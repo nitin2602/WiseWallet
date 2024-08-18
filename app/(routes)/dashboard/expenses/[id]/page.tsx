@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 
 import Alert from './../_components/Alert';
 
-function page({ params }: any) {
+function Page({ params }: any) {
   const { user } = useUser();
   const createdBy = user?.primaryEmailAddress?.emailAddress;
 
@@ -59,4 +59,4 @@ function page({ params }: any) {
   );
 }
 
-export default page;
+export default Page;
