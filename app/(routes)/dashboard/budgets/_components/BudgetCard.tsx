@@ -28,7 +28,7 @@ function BudgetCard({ item }: any) {
                 {dateFormat(item.createdAt, "mmmm dS, yyyy, h:MM TT")}
               </small>
             </p>
-          </Link>
+          </div>
         </div>
 
         <dl className="mt-6 flex gap-4 sm:gap-6">
@@ -50,7 +50,7 @@ function BudgetCard({ item }: any) {
             <dd className="text-xs text-gray-500">Amount left</dd>
           </div>
         </dl>
-      </div>
+      </Link>
     </div>
   );
 }
