@@ -2,18 +2,19 @@ import React from "react";
 
 
 import dateFormat  from 'dateformat';
-import Link from "next/navigation";
+import { useRouter } from "next/navigation";
 
 
 
 function BudgetCard({ item }: any) {
+  const router = useRouter();
   return (
     <div>
       
-      <Link
-        href={'/dashboard/expenses/' + item.id}
-        className="relative  block m-4 overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8"
-      >
+     <div
+      onClick={() => router.push(`/dashboard/expenses/${item.id}`)}
+      className="relative block m-4 overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 cursor-pointer"
+    >
         <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
 
         <div className="sm:flex sm:justify-between sm:gap-4">
@@ -49,7 +50,7 @@ function BudgetCard({ item }: any) {
             <dd className="text-xs text-gray-500">Amount left</dd>
           </div>
         </dl>
-      </Link>
+      </div>
     </div>
   );
 }
