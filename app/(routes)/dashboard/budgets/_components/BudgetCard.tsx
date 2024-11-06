@@ -11,10 +11,10 @@ function BudgetCard({ item }: any) {
   return (
     <div>
       
-     <div
-      onClick={() => router.push(`/dashboard/expenses/${item.id}`)}
-      className="relative block m-4 overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 cursor-pointer"
-    >
+      <Link
+        href={'/dashboard/expenses/' + item.id}
+        className="relative  block m-4 overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 cursor-pointer"
+      >
         <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
 
         <div className="sm:flex sm:justify-between sm:gap-4">
@@ -28,7 +28,7 @@ function BudgetCard({ item }: any) {
                 {dateFormat(item.createdAt, "mmmm dS, yyyy, h:MM TT")}
               </small>
             </p>
-          </div>
+          </Link>
         </div>
 
         <dl className="mt-6 flex gap-4 sm:gap-6">
