@@ -13,7 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import axios from "axios";
-import { Router, useRouter } from "next/router";
+import { Router, useRouter } from "next/navigation";
 
 function Alert({ id }) {
   const { toast } = useToast();
