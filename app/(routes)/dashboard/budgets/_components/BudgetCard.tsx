@@ -2,7 +2,7 @@ import React from "react";
 
 
 import dateFormat  from 'dateformat';
-import Link from "next/link";
+import Link from "next/navigation";
 
 
 
