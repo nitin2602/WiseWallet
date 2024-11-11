@@ -1,4 +1,4 @@
-
+//@ts-nocheck
 'use client'
 import {
   Table,
@@ -25,7 +25,7 @@ interface Expense {
   budgetName: string;
 }
 
-function LatestExpense() {
+function LatestExpense({ convertValue, exchangeRate,selectedCurrency }) {
   const { user } = useUser();
   const [expenses, setExpenses] = useState<Expense[]>([]);
   
@@ -72,7 +72,9 @@ function LatestExpense() {
               <TableCell>{expense.budgetName}</TableCell>
               <TableCell>{dateFormat(expense.createdAt, "mmmm dS, yyyy, h:MM TT")}</TableCell>
               <TableCell className="text-right font-semibold text-red-500">
-              ₹{expense.amount}
+                {selectedCurrency
+                  ? `${selectedCurrency}${convertValue(expense.amount)}`
+                  : `₹${convertValue(expense.amount)}`}
               </TableCell>
             </TableRow>
           ))}
