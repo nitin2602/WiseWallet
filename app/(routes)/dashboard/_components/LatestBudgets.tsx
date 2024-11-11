@@ -1,5 +1,5 @@
-// @ts-nocheck 
-'use client'
+// @ts-nocheck
+"use client";
 import {
   Table,
   TableBody,
@@ -12,12 +12,12 @@ import {
 } from "@/components/ui/table";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import dateFormat  from 'dateformat';
+import dateFormat from "dateformat";
 import { useUser } from "@clerk/nextjs";
 
-function LatestBudgets() {
+function LatestBudgets({ convertValue, exchangeRate,selectedCurrency }) {
   const { user } = useUser();
-  
+
   const [budgets, setBudgets] = useState([]);
   const [isLoading, setisLoading] = useState<boolean>(true);
   useEffect(() => {
@@ -26,20 +26,18 @@ function LatestBudgets() {
       if (!createdBy) return; // Ensure createdBy is available
 
       try {
-        const response = await axios.post('/api/getbudget', {
+        const response = await axios.post("/api/getbudget", {
           createdBy, // Pass createdBy in the request body
         });
         setBudgets(response.data);
-        
       } catch (error) {
-        console.error('Error fetching budgets:', error);
-        
+        console.error("Error fetching budgets:", error);
       }
     };
 
     fetchBudgets();
   }, []);
-  console.log(budgets)
+  // console.log(budgets)
 
   return (
     <div className="p-3 mt-3 overflow-x-auto rounded-lg border border-gray-200">
@@ -61,15 +59,17 @@ function LatestBudgets() {
             <TableRow key={budget.id}>
               <TableCell className="font-medium">{budget.name}</TableCell>
               <TableCell>{budget.expenseCount}</TableCell>
-              <TableCell>{dateFormat(budget.createdAt, "mmmm dS, yyyy, h:MM TT")}</TableCell>
+              <TableCell>
+                {dateFormat(budget.createdAt, "mmmm dS, yyyy, h:MM TT")}
+              </TableCell>
               <TableCell className="text-right font-semibold text-blue-500">
-              ₹{budget.amount}
+                {selectedCurrency
+                  ? `${selectedCurrency}${convertValue(budget.amount)}`
+                  : `₹${convertValue(budget.amount)}`}
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
-        
-        
       </Table>
     </div>
   );
