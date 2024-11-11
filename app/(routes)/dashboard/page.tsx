@@ -8,7 +8,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/select";
+} from "@/components/ui/select";
 import { useUser } from "@clerk/nextjs";
 
 import React, { useEffect, useState } from "react";
